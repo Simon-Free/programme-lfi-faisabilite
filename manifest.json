@@ -1,0 +1,383 @@
+{
+  "site": {
+    "titre": "L'Avenir en commun, au banc d'essai",
+    "sous_titre": "Expertise de faisabilité du programme de La France insoumise (édition 2025)",
+    "accroche": "Ce que le programme propose, ce que cela coûterait, ce qui bloquerait, et ce qui marcherait quand même. Écrit pour qui n'a pas lu le programme.",
+    "source_dir": "../vulgarise",
+    "accueil": "accueil.md",
+    "date": "2026-07-31"
+  },
+  "rubriques": [
+    {
+      "slug": "comprendre",
+      "titre": "Comprendre",
+      "resume": "De quoi parle le programme, comment cette expertise a été conduite, et ce qu'elle ne dit pas.",
+      "slot": 1
+    },
+    {
+      "slug": "chiffrage",
+      "titre": "Le chiffrage",
+      "resume": "Combien ça coûte, ce que ça rapporte, et l'écart entre la lecture littérale et une lecture raffinée.",
+      "slot": 2
+    },
+    {
+      "slug": "chapitres",
+      "titre": "Les 18 chapitres",
+      "resume": "Une fiche par chapitre du programme : ce qu'il contient, ce qu'il coûte, ce qui coince.",
+      "slot": 3
+    },
+    {
+      "slug": "obstacles",
+      "titre": "Les obstacles",
+      "resume": "Le Parlement, la main-d'œuvre disponible, la Constitution et les traités européens.",
+      "slot": 4
+    },
+    {
+      "slug": "ce-qui-marcherait",
+      "titre": "Ce qui marcherait",
+      "resume": "Les variantes chiffrées et les recommandations de raffinement, mesure par mesure.",
+      "slot": 5
+    },
+    {
+      "slug": "sources",
+      "titre": "Sources et méthode",
+      "resume": "D'où viennent les chiffres, comment les vérifier, et ce qui reste à confirmer.",
+      "slot": 7
+    }
+  ],
+  "fiches": [
+    {
+      "slug": "presentation",
+      "source": "presentation.md",
+      "rubrique": "comprendre",
+      "ordre": 1,
+      "titre": "De quoi parle le programme",
+      "resume": "Les 18 chapitres en une page : ce que L'Avenir en commun propose de changer.",
+      "mots": "programme LFI Mélenchon présentation vue d'ensemble"
+    },
+    {
+      "slug": "methode",
+      "source": "methode.md",
+      "rubrique": "comprendre",
+      "ordre": 2,
+      "titre": "Comment cette expertise a été faite",
+      "resume": "Analyse, contre-analyse, vérification externe : la chaîne de production et l'ordre de priorité en cas de désaccord.",
+      "mots": "méthode analyse contre-analyse vérification priorité"
+    },
+    {
+      "slug": "limites",
+      "source": "limites.md",
+      "rubrique": "comprendre",
+      "ordre": 3,
+      "titre": "Ce que cette expertise ne dit pas",
+      "resume": "Les trois avertissements de lecture et les zones où le travail reste incomplet.",
+      "mots": "limites avertissements incertitude périmètre"
+    },
+    {
+      "slug": "combien-ca-coute",
+      "source": "chiffrage.md",
+      "rubrique": "chiffrage",
+      "ordre": 1,
+      "titre": "Combien ça coûte",
+      "resume": "Le total consolidé des dépenses et des recettes, et comment il se décompose.",
+      "mots": "coût dépenses recettes budget milliards consolidé"
+    },
+    {
+      "slug": "verification",
+      "source": "verification_chiffrage.md",
+      "rubrique": "chiffrage",
+      "ordre": 2,
+      "titre": "Ce que disent les autres chiffrages",
+      "resume": "Confrontation aux chiffrages publiés par des tiers, et les corrections qui en découlent.",
+      "mots": "vérification externe tiers institut comparaison"
+    },
+    {
+      "slug": "doubles-comptes",
+      "source": "doubles_comptes.md",
+      "rubrique": "chiffrage",
+      "ordre": 3,
+      "titre": "Les doubles comptes",
+      "resume": "Les recettes comptées deux fois et les dépenses qui se recouvrent d'un chapitre à l'autre.",
+      "mots": "doubles comptes recouvrement recettes surestimation"
+    },
+    {
+      "slug": "taxer-le-capital",
+      "source": "taxer_le_capital.md",
+      "rubrique": "chiffrage",
+      "ordre": 4,
+      "titre": "Ce que taxer le capital peut rapporter",
+      "resume": "Le patrimoine français, ce qu'il produit vraiment, ce que l'État en prélève déjà, et la marge qui reste.",
+      "mots": "capital patrimoine fortune succession Dutreil niches fiscalité ISF IFI"
+    },
+    {
+      "slug": "ch01",
+      "source": "ch01.md",
+      "rubrique": "chapitres",
+      "ordre": 1,
+      "titre": "Chapitre 1 — Le pouvoir au peuple",
+      "resume": "Constituante, référendum révocatoire, réforme des institutions.",
+      "mots": "constituante référendum institutions VIe République"
+    },
+    {
+      "slug": "ch02",
+      "source": "ch02.md",
+      "rubrique": "chapitres",
+      "ordre": 2,
+      "titre": "Chapitre 2 — Par-delà la propriété privée",
+      "resume": "Biens communs, nationalisations, propriété d'usage.",
+      "mots": "propriété nationalisation biens communs"
+    },
+    {
+      "slug": "ch03",
+      "source": "ch03.md",
+      "rubrique": "chapitres",
+      "ordre": 3,
+      "titre": "Chapitre 3 — Citoyens dans l'entreprise et dans la ville",
+      "resume": "Droits des salariés, démocratie d'entreprise, logement et ville.",
+      "mots": "entreprise salariés logement ville démocratie sociale"
+    },
+    {
+      "slug": "ch04",
+      "source": "ch04.md",
+      "rubrique": "chapitres",
+      "ordre": 4,
+      "titre": "Chapitre 4 — Étendre le domaine de la liberté",
+      "resume": "Libertés publiques, justice, police, égalité des droits.",
+      "mots": "libertés justice police droits égalité"
+    },
+    {
+      "slug": "ch05",
+      "source": "ch05.md",
+      "rubrique": "chapitres",
+      "ordre": 5,
+      "titre": "Chapitre 5 — Élever le niveau d'instruction",
+      "resume": "École, université, recherche : moyens, postes et bâti.",
+      "mots": "école éducation université recherche enseignants"
+    },
+    {
+      "slug": "ch06",
+      "source": "ch06.md",
+      "rubrique": "chapitres",
+      "ordre": 6,
+      "titre": "Chapitre 6 — Partage des richesses",
+      "resume": "Salaires, fiscalité, minima sociaux et impôt sur la fortune.",
+      "mots": "salaire SMIC fiscalité impôt redistribution"
+    },
+    {
+      "slug": "ch07",
+      "source": "ch07.md",
+      "rubrique": "chapitres",
+      "ordre": 7,
+      "titre": "Chapitre 7 — La force de l'entraide",
+      "resume": "Sécurité sociale, retraites, dépendance, protection sociale.",
+      "mots": "retraite sécurité sociale dépendance protection"
+    },
+    {
+      "slug": "ch08",
+      "source": "ch08.md",
+      "rubrique": "chapitres",
+      "ordre": 8,
+      "titre": "Chapitre 8 — Travailler tous, travailler moins, travailler mieux",
+      "resume": "Temps de travail, emploi garanti, conditions de travail.",
+      "mots": "travail 32 heures emploi chômage temps de travail"
+    },
+    {
+      "slug": "ch09",
+      "source": "ch09.md",
+      "rubrique": "chapitres",
+      "ordre": 9,
+      "titre": "Chapitre 9 — Produire nous-mêmes pour répondre aux besoins",
+      "resume": "Industrie, relocalisation, protectionnisme solidaire, filières.",
+      "mots": "industrie relocalisation production filières souveraineté"
+    },
+    {
+      "slug": "ch10",
+      "source": "ch10.md",
+      "rubrique": "chapitres",
+      "ordre": 10,
+      "titre": "Chapitre 10 — Faire place à la nouvelle France",
+      "resume": "Jeunesse, immigration, outre-mer, quartiers populaires.",
+      "mots": "jeunesse immigration outre-mer quartiers"
+    },
+    {
+      "slug": "ch11",
+      "source": "ch11.md",
+      "rubrique": "chapitres",
+      "ordre": 11,
+      "titre": "Chapitre 11 — Humaniser par la culture et le sport",
+      "resume": "Politique culturelle, médias, sport et pratiques amateurs.",
+      "mots": "culture médias sport création audiovisuel"
+    },
+    {
+      "slug": "ch12",
+      "source": "ch12.md",
+      "rubrique": "chapitres",
+      "ordre": 12,
+      "titre": "Chapitre 12 — Planification écologique",
+      "resume": "L'architecture de la bifurcation : règle verte, planification, financement.",
+      "mots": "écologie planification règle verte climat"
+    },
+    {
+      "slug": "ch13",
+      "source": "ch13.md",
+      "rubrique": "chapitres",
+      "ordre": 13,
+      "titre": "Chapitre 13 — Les grands chantiers de la bifurcation écologique",
+      "resume": "Énergie, transports, rénovation, agriculture : les chantiers physiques.",
+      "mots": "énergie transport rénovation agriculture chantiers"
+    },
+    {
+      "slug": "ch14",
+      "source": "ch14.md",
+      "rubrique": "chapitres",
+      "ordre": 14,
+      "titre": "Chapitre 14 — Protection des biens communs et des droits de l'espèce",
+      "resume": "Eau, biodiversité, animaux, communs naturels.",
+      "mots": "eau biodiversité animaux communs nature"
+    },
+    {
+      "slug": "ch15",
+      "source": "ch15.md",
+      "rubrique": "chapitres",
+      "ordre": 15,
+      "titre": "Chapitre 15 — Une approche de santé globale",
+      "resume": "Hôpital, accès aux soins, personnel médical, santé environnementale.",
+      "mots": "santé hôpital soignants médecins accès aux soins"
+    },
+    {
+      "slug": "ch16",
+      "source": "ch16.md",
+      "rubrique": "chapitres",
+      "ordre": 16,
+      "titre": "Chapitre 16 — Une diplomatie altermondialiste pour la paix",
+      "resume": "Alliances, défense, aide au développement, sortie de l'OTAN.",
+      "mots": "diplomatie OTAN défense paix international"
+    },
+    {
+      "slug": "ch17",
+      "source": "ch17.md",
+      "rubrique": "chapitres",
+      "ordre": 17,
+      "titre": "Chapitre 17 — Europe",
+      "resume": "Désobéissance aux traités, plan A et plan B, marges de manœuvre réelles.",
+      "mots": "Europe traités désobéissance UE plan B"
+    },
+    {
+      "slug": "ch18",
+      "source": "ch18.md",
+      "rubrique": "chapitres",
+      "ordre": 18,
+      "titre": "Chapitre 18 — Nouvelles frontières de l'humanité",
+      "resume": "Mer, espace, numérique : les domaines émergents.",
+      "mots": "mer espace numérique frontières technologie"
+    },
+    {
+      "slug": "vue-d-ensemble",
+      "source": "obstacles.md",
+      "rubrique": "obstacles",
+      "ordre": 1,
+      "titre": "Les quatre murs",
+      "resume": "Vue d'ensemble des obstacles qui ne dépendent d'aucun chapitre pris isolément.",
+      "mots": "obstacles murs blocages vue d'ensemble"
+    },
+    {
+      "slug": "parlement",
+      "source": "obstacle_parlement.md",
+      "rubrique": "obstacles",
+      "ordre": 2,
+      "titre": "Le mur parlementaire",
+      "resume": "Le nombre de lois nécessaires face à la capacité réelle du Parlement à les voter.",
+      "mots": "Parlement lois véhicules législatifs calendrier séquençage"
+    },
+    {
+      "slug": "main-d-oeuvre",
+      "source": "obstacle_main_doeuvre.md",
+      "rubrique": "obstacles",
+      "ordre": 3,
+      "titre": "Le mur de la main-d'œuvre",
+      "resume": "Les recrutements promis, additionnés, comparés aux personnes disponibles et formables.",
+      "mots": "recrutement emplois postes formation pénurie main-d'œuvre"
+    },
+    {
+      "slug": "constitution",
+      "source": "obstacle_constitution.md",
+      "rubrique": "obstacles",
+      "ordre": 4,
+      "titre": "Le mur constitutionnel",
+      "resume": "Les mesures exposées à une censure du Conseil constitutionnel, et le chemin constituant.",
+      "mots": "Constitution Conseil constitutionnel censure constituante"
+    },
+    {
+      "slug": "europe",
+      "source": "obstacle_europe.md",
+      "rubrique": "obstacles",
+      "ordre": 5,
+      "titre": "Le mur européen",
+      "resume": "Ce que les traités interdisent, ce qu'ils tolèrent, et le coût d'un passage en force.",
+      "mots": "Europe traités UE droit européen sanctions"
+    },
+    {
+      "slug": "climat",
+      "source": "climat_ce_qui_bloque.md",
+      "rubrique": "obstacles",
+      "ordre": 6,
+      "titre": "Climat : ce qui bloque vraiment",
+      "resume": "La vitesse maximale de décarbonation, bornée par le renouvellement des voitures, des chaudières et des usines — pas par l'argent.",
+      "mots": "climat émissions décarbonation calendrier 2030 2035 parc automobile chaudières pompes à chaleur"
+    },
+    {
+      "slug": "argent-ou-ressources",
+      "source": "argent_ou_ressources.md",
+      "rubrique": "obstacles",
+      "ordre": 7,
+      "titre": "L'argent ou les moyens réels ?",
+      "resume": "La contrainte est-elle le financement, ou les gens, les usines et les matériaux ? L'ordre des obstacles était inversé.",
+      "mots": "dette euro ressources réelles main-d'œuvre inflation capacité absorbable"
+    },
+    {
+      "slug": "variantes",
+      "source": "ce_qui_marcherait.md",
+      "rubrique": "ce-qui-marcherait",
+      "ordre": 1,
+      "titre": "Les variantes qui tiennent",
+      "resume": "Pour chaque mesure problématique, la version qui atteint le même but sans le blocage.",
+      "mots": "variantes alternatives raffinement recommandations"
+    },
+    {
+      "slug": "priorites",
+      "source": "priorites.md",
+      "rubrique": "ce-qui-marcherait",
+      "ordre": 2,
+      "titre": "Par quoi commencer",
+      "resume": "Ce qui est applicable vite, ce qui demande une loi, ce qui demande une révision.",
+      "mots": "priorités séquence calendrier premiers mois"
+    },
+    {
+      "slug": "conscription",
+      "source": "conscription.md",
+      "rubrique": "ce-qui-marcherait",
+      "ordre": 3,
+      "titre": "Service national : la version qui tient",
+      "resume": "La France a déjà encadré 617 000 jeunes à la fois, mais sans les payer. Ce qui bloque, les trois leviers qui changent tout, et la mesure la plus rentable.",
+      "mots": "conscription service national universel SNU appelés encadrement internat journée défense et citoyenneté"
+    },
+    {
+      "slug": "d-ou-viennent-les-chiffres",
+      "source": "sources.md",
+      "rubrique": "sources",
+      "ordre": 1,
+      "titre": "D'où viennent les chiffres",
+      "resume": "Typage des chiffrages : revendiqués par LFI, produits par des tiers, ou estimés ici.",
+      "mots": "sources chiffrage typage LFI tiers estimation traçabilité"
+    },
+    {
+      "slug": "a-verifier",
+      "source": "a_verifier.md",
+      "rubrique": "sources",
+      "ordre": 2,
+      "titre": "Ce qui reste à vérifier",
+      "resume": "Les points non confirmés sur source primaire, et qui détient la donnée manquante.",
+      "mots": "à vérifier incertitude données manquantes confiance faible"
+    }
+  ]
+}

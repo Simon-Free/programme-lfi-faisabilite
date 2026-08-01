@@ -1,0 +1,391 @@
+/* =========================================================================
+   Figures. Aucune couleur en dur : tout vient des jetons de style.css.
+   Les series portent --cat-N, les statuts leurs jetons reserves.
+   ========================================================================= */
+
+.chart {
+  margin: var(--space-6) 0;
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-raised);
+  font-family: var(--font-ui);
+  max-width: 100%;
+  min-width: 0;
+}
+
+.chart__head {
+  margin-bottom: var(--space-4);
+}
+.chart__title {
+  font-size: var(--step-1);
+  margin: 0 0 var(--space-2);
+  line-height: 1.3;
+}
+.chart__read,
+.chart__note {
+  font-family: var(--font-prose);
+  font-size: var(--step--1);
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-2);
+  line-height: 1.5;
+}
+.chart__note {
+  border-left: 2px solid var(--border-strong);
+  padding-left: var(--space-3);
+  margin: var(--space-3) 0;
+}
+.chart__source {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: var(--space-3);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--border);
+}
+.chart__facet-title {
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: var(--space-5) 0 var(--space-2);
+}
+
+/* --- Le trace ----------------------------------------------------------- */
+/* Le conteneur defile pour lui seul : la page ne deborde jamais. */
+.chart__plot {
+  overflow-x: auto;
+  margin: 0 calc(var(--space-4) * -1);
+  padding: 0 var(--space-4);
+}
+.chart__svg {
+  display: block;
+  width: 100%;
+  min-width: 30rem;
+  height: auto;
+  overflow: visible;
+}
+
+/* Marques : fines, arrondies au bout, jamais bordees. */
+.mark {
+  transition: opacity 0.12s ease;
+}
+.mark--1 { fill: var(--cat-1); }
+.mark--2 { fill: var(--cat-2); }
+.mark--3 { fill: var(--cat-3); }
+.mark--4 { fill: var(--cat-4); }
+.mark--5 { fill: var(--cat-5); }
+.mark--6 { fill: var(--cat-6); }
+.mark--7 { fill: var(--cat-7); }
+.mark--8 { fill: var(--cat-8); }
+
+/* Statuts reserves : jamais une couleur de serie, toujours avec un libelle. */
+.mark--blocking { fill: var(--severity-blocking); }
+.mark--major { fill: var(--severity-major); }
+.mark--medium { fill: var(--confidence-medium); }
+.mark--minor { fill: var(--severity-minor); }
+.mark--irremediable { fill: var(--text-primary); }
+
+/* La continuation vers la borne haute : meme teinte, en retrait.
+   La marque s'efface VERS la surface, donc l'effet s'inverse d'un theme a
+   l'autre. Sur fond sombre, une simple opacite fait plonger la barre sous le
+   seuil de contraste : on l'eclaircit avant de la reduire. */
+.chart__range {
+  opacity: 0.34;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .chart__range {
+    opacity: 0.55;
+    filter: brightness(1.45);
+  }
+}
+:root[data-theme="dark"] .chart__range {
+  opacity: 0.55;
+  filter: brightness(1.45);
+}
+
+.chart__grid {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+.chart__threshold {
+  stroke: var(--text-secondary);
+  stroke-width: 2;
+}
+.chart__threshold-label,
+.chart__tick,
+.chart__axis-unit {
+  fill: var(--text-secondary);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  text-anchor: middle;
+}
+.chart__axis-unit {
+  font-variant-numeric: normal;
+  letter-spacing: 0.04em;
+}
+.chart__row-label {
+  fill: var(--text-primary);
+  font-size: 12px;
+}
+.chart__rank {
+  fill: var(--text-secondary);
+}
+.chart__value {
+  fill: var(--text-primary);
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart__mark-group {
+  cursor: default;
+}
+.chart__mark-group:hover .mark,
+.chart__mark-group:focus-visible .mark {
+  opacity: 0.75;
+}
+.chart__mark-group:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* --- Legende ------------------------------------------------------------ */
+.chart__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  list-style: none;
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  font-size: var(--step--1);
+  color: var(--text-secondary);
+}
+.chart__legend li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+}
+.chart__puce {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 2px;
+  flex: none;
+}
+.chart__puce.mark--1 { background: var(--cat-1); }
+.chart__puce.mark--2 { background: var(--cat-2); }
+.chart__puce.mark--3 { background: var(--cat-3); }
+.chart__puce.mark--7 { background: var(--cat-7); }
+
+/* --- Chiffre-heros et jauge --------------------------------------------- */
+.chart__hero {
+  margin: 0 0 var(--space-4);
+}
+.chart__hero-value {
+  font-size: clamp(2.5rem, 2rem + 2.4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  color: var(--text-primary);
+}
+.chart__hero-label {
+  font-size: var(--step-0);
+  margin: var(--space-2) 0 0;
+  color: var(--text-primary);
+}
+.chart__hero-note {
+  font-size: var(--step--1);
+  color: var(--text-secondary);
+  margin: var(--space-1) 0 0;
+}
+
+.chart__meter {
+  margin: var(--space-4) 0 0;
+}
+.chart__meter-track {
+  height: 12px;
+  border-radius: 6px;
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.chart__meter-fill {
+  height: 100%;
+  background: var(--cat-3);
+  border-radius: 6px 0 0 6px;
+}
+.chart__meter-label {
+  font-size: var(--step--1);
+  color: var(--text-secondary);
+  margin: var(--space-2) 0 0;
+}
+
+/* --- Confrontation de deux grandeurs ------------------------------------ */
+.chart__ratio {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+.chart__ratio-value {
+  font-size: var(--step-4);
+  font-weight: 700;
+  line-height: 1.05;
+  margin: 0;
+}
+.chart__ratio-side--faible .chart__ratio-value {
+  color: var(--text-secondary);
+}
+.chart__ratio-label {
+  font-size: var(--step--1);
+  color: var(--text-secondary);
+  margin: var(--space-1) 0 0;
+  max-width: 14rem;
+}
+.chart__ratio-sign,
+.chart__ratio-factor {
+  font-size: var(--step--1);
+  color: var(--text-secondary);
+  margin: 0;
+}
+.chart__ratio-factor {
+  font-weight: 700;
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: var(--space-1) var(--space-3);
+}
+
+/* --- Tuiles de statut et sequence --------------------------------------- */
+.chart__tiles,
+.chart__steps {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: minmax(0, 1fr);
+  list-style: none;
+  margin: 0 0 var(--space-4);
+  padding: 0;
+}
+@media (min-width: 34rem) {
+  .chart__tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .chart__steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 60rem) {
+  .chart__steps { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+.chart__tiles li,
+.chart__steps li {
+  margin: 0;
+}
+
+.chart__tile {
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.chart__tile--blocking {
+  border-top-color: var(--severity-blocking);
+  background: var(--severity-blocking-bg);
+}
+.chart__tile--irremediable {
+  border-top-color: var(--text-primary);
+}
+.chart__tile-value {
+  display: block;
+  font-size: var(--step-3);
+  font-weight: 700;
+  line-height: 1.1;
+}
+.chart__tile-label {
+  display: block;
+  font-size: var(--step--1);
+  margin-top: var(--space-1);
+}
+.chart__tile-note {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: var(--space-1);
+}
+
+.chart__step {
+  padding: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.chart__step-rank {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-inverse);
+  background: var(--text-secondary);
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 0 var(--space-2);
+}
+.chart__step-title {
+  font-size: var(--step--1);
+  font-weight: 600;
+  margin: 0;
+}
+.chart__step-time {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin: var(--space-1) 0;
+  font-variant-numeric: tabular-nums;
+}
+.chart__step-note {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* --- Table de substitution ---------------------------------------------- */
+.chart__data {
+  margin-top: var(--space-4);
+  font-size: var(--step--1);
+}
+.chart__data summary {
+  cursor: pointer;
+  color: var(--link);
+  padding: var(--space-2) 0;
+}
+.chart__data summary:hover {
+  text-decoration: underline;
+}
+
+/* --- Infobulle ---------------------------------------------------------- */
+.chart-bulle {
+  position: fixed;
+  z-index: 60;
+  max-width: 20rem;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--surface-raised);
+  color: var(--text-primary);
+  box-shadow: var(--shadow);
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  pointer-events: none;
+  white-space: pre-line;
+}
+.chart-bulle[hidden] {
+  display: none;
+}
+.chart-bulle strong {
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+@media print {
+  .chart__data[open] summary ~ * { display: block; }
+  .chart-bulle { display: none; }
+}

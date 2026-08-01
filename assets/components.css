@@ -1,0 +1,320 @@
+/* =========================================================================
+   Gabarit et composants. Aucune couleur en dur : tout vient de style.css.
+   ========================================================================= */
+
+/* --- Barre de navigation ------------------------------------------------ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--surface-raised);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-ui);
+}
+
+.site-header__bar {
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.site-header__brand {
+  font-weight: 700;
+  font-size: var(--step-0);
+  color: var(--text-primary);
+  text-decoration: none;
+  line-height: 1.2;
+  margin-right: auto;
+}
+.site-header__brand span {
+  display: block;
+  font-weight: 400;
+  font-size: var(--step--1);
+  color: var(--text-secondary);
+}
+
+/* Au-dela de cette largeur tout tient sur une ligne : le sous-titre cede. */
+@media (min-width: 68rem) {
+  .site-header__bar {
+    flex-wrap: nowrap;
+  }
+  .site-header__brand {
+    min-width: 0;
+  }
+  .site-header__brand span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .site-nav {
+    flex: none;
+  }
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-nav li {
+  margin: 0;
+}
+.site-nav a {
+  display: inline-block;
+  padding: var(--space-1) 0;
+  font-size: var(--step--1);
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+.site-nav a:hover {
+  color: var(--text-primary);
+}
+.site-nav a[aria-current="page"] {
+  color: var(--text-primary);
+  font-weight: 600;
+  border-bottom-color: var(--cat-1);
+}
+
+.theme-toggle {
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  font-family: var(--font-ui);
+  font-size: var(--step--1);
+  padding: var(--space-2) var(--space-3);
+  cursor: pointer;
+  line-height: 1;
+  white-space: nowrap;
+  flex: none;
+}
+.theme-toggle:hover {
+  background: var(--surface-sunken);
+}
+
+/* --- Structure de page -------------------------------------------------- */
+.breadcrumb {
+  font-family: var(--font-ui);
+  font-size: var(--step--1);
+  color: var(--text-secondary);
+  padding: var(--space-4) 0 0;
+}
+.breadcrumb ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+}
+.breadcrumb li {
+  margin: 0;
+}
+.breadcrumb li + li::before {
+  content: "\203A";
+  margin-right: var(--space-2);
+  color: var(--border-strong);
+}
+
+.layout {
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 0 var(--space-4) var(--space-8);
+}
+
+/* minmax(0, ...) et non 1fr : sans cela un tableau large force la colonne
+   a s'elargir, et c'est la page entiere qui se met a defiler. */
+.layout--with-toc {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+}
+
+.prose {
+  max-width: var(--measure);
+  min-width: 0;
+}
+.prose > * {
+  max-width: 100%;
+}
+
+/* Sommaire lateral */
+.toc {
+  font-family: var(--font-ui);
+  font-size: var(--step--1);
+  border-top: 2px solid var(--border-strong);
+  padding-top: var(--space-3);
+}
+.toc__title {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-3);
+}
+.toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.toc li {
+  margin-bottom: var(--space-2);
+}
+.toc a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.toc a:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+@media (min-width: 60rem) {
+  /* Le sommaire se colle a la mesure de lecture : pas de vide au milieu,
+     et le bord gauche reste aligne sur le fil d'Ariane. */
+  .layout--with-toc {
+    grid-template-columns: minmax(0, var(--measure)) 15rem;
+    justify-content: start;
+  }
+  .toc {
+    position: sticky;
+    top: 5.5rem;
+    max-height: calc(100vh - 7rem);
+    overflow-y: auto;
+  }
+}
+
+/* --- Pied de page et navigation sequentielle ---------------------------- */
+.pager {
+  display: grid;
+  gap: var(--space-3);
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+  font-family: var(--font-ui);
+}
+@media (min-width: 40rem) {
+  .pager {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.pager a {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-raised);
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: var(--step--1);
+}
+.pager a:hover {
+  border-color: var(--border-strong);
+}
+.pager small {
+  display: block;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-1);
+}
+.pager__next {
+  text-align: right;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--surface-sunken);
+  font-family: var(--font-ui);
+  font-size: var(--step--1);
+  color: var(--text-secondary);
+}
+.site-footer div {
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-4);
+}
+
+/* --- Cartes de rubrique et de fiche ------------------------------------- */
+.card-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: minmax(0, 1fr);
+  padding: 0;
+  margin: var(--space-5) 0;
+  list-style: none;
+}
+@media (min-width: 44rem) {
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 68rem) {
+  .card-grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.card-grid li {
+  margin: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--cat-1);
+  border-radius: var(--radius);
+  background: var(--surface-raised);
+  text-decoration: none;
+  color: inherit;
+}
+.card:hover {
+  border-color: var(--border-strong);
+  border-left-color: var(--cat-1);
+  box-shadow: var(--shadow);
+}
+.card h3 {
+  font-size: var(--step-1);
+  margin: 0 0 var(--space-2);
+  color: var(--link);
+}
+.card p {
+  margin: 0;
+  font-size: var(--step--1);
+  color: var(--text-secondary);
+}
+.card__meta {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+/* Le liseré reprend le slot de la palette attribué à la rubrique. */
+.card--slot-2 { border-left-color: var(--cat-2); }
+.card--slot-3 { border-left-color: var(--cat-3); }
+.card--slot-4 { border-left-color: var(--cat-4); }
+.card--slot-5 { border-left-color: var(--cat-5); }
+.card--slot-6 { border-left-color: var(--cat-6); }
+.card--slot-7 { border-left-color: var(--cat-7); }
+.card--slot-8 { border-left-color: var(--cat-8); }
+.card--slot-2:hover { border-left-color: var(--cat-2); }
+.card--slot-3:hover { border-left-color: var(--cat-3); }
+.card--slot-4:hover { border-left-color: var(--cat-4); }
+.card--slot-5:hover { border-left-color: var(--cat-5); }
+.card--slot-6:hover { border-left-color: var(--cat-6); }
+.card--slot-7:hover { border-left-color: var(--cat-7); }
+.card--slot-8:hover { border-left-color: var(--cat-8); }
