@@ -126,6 +126,24 @@
   fill: var(--text-primary);
   font-size: 12px;
 }
+/* Titre d'un empilement : il vit au-dessus de la barre, pas dans une
+   gouttiere — un intitule de composition est trop long pour une marge. */
+.chart__stack-label {
+  fill: var(--text-primary);
+  font-size: 12px;
+  font-weight: 600;
+}
+/* Valeur d'un segment : posee SOUS lui, jamais dessus. Sur un aplat de
+   serie, une etiquette de 11px tombe sous le seuil de contraste dans l'un
+   des deux themes au moins ; sous la barre, elle porte l'encre de texte et
+   reste lisible dans les deux. */
+.chart__seg-value {
+  fill: var(--text-secondary);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  text-anchor: middle;
+  pointer-events: none;
+}
 .chart__rank {
   fill: var(--text-secondary);
 }
@@ -174,7 +192,11 @@
 .chart__puce.mark--1 { background: var(--cat-1); }
 .chart__puce.mark--2 { background: var(--cat-2); }
 .chart__puce.mark--3 { background: var(--cat-3); }
+.chart__puce.mark--4 { background: var(--cat-4); }
+.chart__puce.mark--5 { background: var(--cat-5); }
+.chart__puce.mark--6 { background: var(--cat-6); }
 .chart__puce.mark--7 { background: var(--cat-7); }
+.chart__puce.mark--8 { background: var(--cat-8); }
 
 /* --- Chiffre-heros et jauge --------------------------------------------- */
 .chart__hero {

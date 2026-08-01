@@ -16,10 +16,13 @@ SOURCE = (
 )
 
 CONSOLIDE = [
-    ("Dépenses — littérale, base consolidée", 395, 472, 525, 1),
-    ("Dépenses — littérale, chaîne auditée", 395, 460, 525, 1),
-    ("Dépenses — variantes appliquées", 340, 395, 450, 1),
-    ("Recettes nouvelles réalistes", 18.9, 44.3, 77.6, 3),
+    # Ligne 12+13 ramenee a 35,0-75,6 (transverses/04 § 2.5 bis) : -6,1 sur la
+    # borne basse, -11,25 sur le central, -16,4 sur la borne haute.
+    ("Dépenses — littérale, base consolidée", 389, 460, 509, 1),
+    ("Dépenses — littérale, chaîne auditée", 389, 448, 509, 1),
+    ("Dépenses — variantes appliquées", 334, 384, 434, 1),
+    ("Ressources nouvelles opposables", 31.4, 86.85, 142.3, 3),
+    ("dont recettes fiscales nouvelles", -0.2, 36.15, 72.5, 3),
 ]
 
 
@@ -36,19 +39,19 @@ def chiffrage_consolide():
     ]
     corps = (
         heros(
-            "9 %",
-            "des dépenses nouvelles sont couvertes par une recette nouvelle",
-            "11 % avec les variantes ; 4,5 % avec le compte de recettes "
-            "consolidé",
+            "18,9 %",
+            "des dépenses nouvelles sont couvertes par une ressource nouvelle",
+            "fourchette 6,8 à 30,9 % ; 14,1 % si les économies vont en "
+            "réduction de la dépense. Il manque 373 Md€/an",
         )
         + legende([("mark--1", "Dépenses nouvelles"),
-                   ("mark--3", "Recettes nouvelles")])
+                   ("mark--3", "Ressources nouvelles")])
         + barres(lignes, unite="Md€/an")
         + jauge(
-            9.4,
-            "Moins d’un euro sur dix",
-            "est financé par une recette nouvelle identifiée. Les neuf autres "
-            "ne le sont pas.",
+            18.9,
+            "Moins d’un euro sur cinq",
+            "est financé par une ressource nouvelle identifiée. Les quatre "
+            "autres ne le sont pas.",
         )
     )
     donnees = table(
@@ -57,26 +60,33 @@ def chiffrage_consolide():
             [libelle, nombre(bas), nombre(central), nombre(haut)]
             for libelle, bas, central, haut, _ in CONSOLIDE
         ]
-        + [["Solde annuel à combler (littérale, base consolidée)", "−317",
-            "−428", "−506"],
-           ["Solde annuel à combler (littérale, chaîne auditée)", "−317",
-            "−416", "−506"],
-           ["Solde à combler, recettes consolidées à 21,2", "—", "−451",
-            "—"],
-           ["Solde annuel à combler (variantes appliquées)", "−262", "−351",
-            "−431"]],
-        "Dépenses et recettes nouvelles du programme, en Md€/an.",
+        + [["<strong>Solde à combler (littérale, base consolidée)</strong>",
+            "−429", "<strong>−373</strong>", "−318"],
+           ["Solde annuel à combler (variantes appliquées, base 448)", "−251",
+            "−340", "−420"]],
+        "Dépenses et ressources nouvelles du programme, en Md€/an.",
     )
     return figure(
         "chiffrage-consolide",
-        "Les recettes couvrent moins d’un dixième des dépenses",
+        "Les ressources couvrent moins d’un cinquième des dépenses",
         "<strong>Comment lire.</strong> La barre pleine va jusqu'à la borne "
         "basse de la fourchette, la barre claire jusqu'à la borne haute. "
-        "Même en retenant la borne haute des recettes et la borne basse des "
+        "Même en retenant la borne haute des ressources et la borne basse des "
         "dépenses, l'écart ne se referme pas.",
         corps,
         donnees,
         SOURCE,
+        note="La ligne « ressources nouvelles opposables » réunit les recettes "
+        "fiscales du compte complet (36,2), les économies proposées par le "
+        "programme et non encore comptées (3,6), les effets de retour "
+        "budgétaires (40,0), les dividendes des entités publiques (2,35), la "
+        "TVA sur la consommation induite (4,5) et les recettes de sanction "
+        "(0,25) — soit 86,9 Md€/an. En face, la dépense récurrente consolidée "
+        "vaut 460 Md€/an : l'enveloppe climat des chapitres 12 et 13 y entre "
+        "pour 35,0 à 75,6 Md€/an, c'est-à-dire la reconstruction ligne à ligne "
+        "des mesures, sans les quatre postes que l'objectif du programme "
+        "appellerait mais qu'aucune de ses mesures ne finance. "
+        "<strong>Il manque 373 Md€/an, soit 12,5 points de PIB.</strong>",
     )
 
 
@@ -85,8 +95,13 @@ CHAPITRES = [
     (5, "Éducation, service citoyen", 52, 102),
     (10, "Égalité, grand âge, handicap", 52, 94),
     (7, "Solidarité, logement", 50, 93),
-    ("12+13", "Écologie et grands chantiers", 41.4, 92.8),
     (9, "Industrie, salaires publics", 37, 56),
+    # Enveloppe climat consolidée : reconstruction ligne à ligne de
+    # consolidation/p1_postes_01-05.md § 1.8, nette du double compte des
+    # cantines (−0,3 / −0,8) et hors clause de complétude, celle-ci mesurant
+    # l'objectif du programme et non ses mesures.
+    # Arbitrage rendu par transverses/28 § 2 ; voir transverses/04 § 2.5 bis.
+    ("12+13", "Écologie et grands chantiers", 35.0, 75.6),
     (15, "Santé (net du gage)", 11, 27),
     (16, "Diplomatie et défense", 9.6, 19.7),
     (11, "Culture et sport", 8.4, 19.3),
@@ -160,7 +175,7 @@ def cout_par_chapitre():
 
 
 DOUBLES = [
-    ("L'enveloppe climat", "12 et 13", 96.7, 172.4, 41, 93, "55 à 80"),
+    ("L'enveloppe climat", "12 et 13", 96.7, 172.4, 35, 76, "62 à 97"),
     ("Le salaire des fonctionnaires", "5, 8 et 9",
      43.3, 57, 22, 26, "20 à 28"),
     ("Le service citoyen", "5 et 10", 38.4, 47.7, 14.4, 23.7, "24"),

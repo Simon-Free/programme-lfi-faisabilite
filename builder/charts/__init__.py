@@ -11,9 +11,19 @@ lignes de SVG noierait le texte qu'elle illustre.
 """
 
 from .budget import chiffrage_consolide, cout_par_chapitre, doubles_comptes
+from .capital_distribution import patrimoine_distribution
+from .capital_gisements import gisements_capital
+from .capital_international import fiscalite_capital_comparee
+from .capital_rendement import rendement_capital
+from .capital_stock import patrimoine_composition
+from .decaissement import profil_decaissement
+from .echelle_budget import echelle_budget
 from .institutions import calendrier_legislatif, risque_constitutionnel
+from .mesures import mesures_par_montant
 from .murs import mur_main_doeuvre, niveaux_confiance
-from .natures import natures_du_cout, profil_decaissement
+from .natures import natures_du_cout
+from .recettes import couverture_recettes
+from .sources import sources_recettes
 from .variantes import variantes_rentables
 
 FIGURES = {
@@ -21,12 +31,21 @@ FIGURES = {
     "cout-par-chapitre": cout_par_chapitre,
     "natures-du-cout": natures_du_cout,
     "profil-decaissement": profil_decaissement,
+    "couverture-recettes": couverture_recettes,
+    "sources-recettes": sources_recettes,
     "niveaux-confiance": niveaux_confiance,
     "doubles-comptes": doubles_comptes,
     "mur-main-doeuvre": mur_main_doeuvre,
     "calendrier-legislatif": calendrier_legislatif,
     "variantes-rentables": variantes_rentables,
     "risque-constitutionnel": risque_constitutionnel,
+    "patrimoine-composition": patrimoine_composition,
+    "patrimoine-distribution": patrimoine_distribution,
+    "rendement-capital": rendement_capital,
+    "fiscalite-capital-comparee": fiscalite_capital_comparee,
+    "gisements-capital": gisements_capital,
+    "echelle-budget": echelle_budget,
+    "mesures-par-montant": mesures_par_montant,
 }
 
 

@@ -294,5 +294,13 @@ window.SEARCH_INDEX = [
   "rubrique": "Sources et méthode",
   "titre": "Ce qui reste à vérifier",
   "url": "sources/a-verifier.html"
+ },
+ {
+  "mots": "journal modifications corrections historique révisions traçabilité changelog",
+  "publie": true,
+  "resume": "Ce que le site publiait, ce qu'il publie désormais, pourquoi, et le document qui l'établit.",
+  "rubrique": "Sources et méthode",
+  "titre": "Journal des modifications",
+  "url": "sources/journal-des-modifications.html"
  }
 ];

@@ -36,7 +36,7 @@ def niveaux_confiance():
         heros(
             "91 %",
             "du chiffre publiable repose sur des chiffrages fragiles",
-            "soit environ 430 Md€/an sur les 472 publiés",
+            "soit environ 420 Md€/an sur les 460 publiés",
         )
         + '<p class="chart__facet-title">Combien de postes, par niveau</p>'
         + barres(nombre_lignes, unite="postes")
