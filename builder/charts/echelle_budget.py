@@ -30,7 +30,9 @@ DEFICIT_PART = DEFICIT_MONTANT / PIB * 100
 # Le 472 qui circule ailleurs comptait la consolidation deux fois : il prenait
 # 460,4 pour la base auditee et lui rajoutait les memes 12,2.
 PROGRAMME = 460.4           # depense nouvelle recurrente, consolidee
-RESSOURCES = 86.9
+# 86,9 jusqu'au 2026-08-01 : la ligne M-6.7 (socialisation bancaire) a ete
+# refaite sur le prix d'acquisition reel du pole bancaire et retire 2,2.
+RESSOURCES = 84.6
 EDUCATION = 197.1
 CHARGE_DETTE = 54.4
 

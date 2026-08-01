@@ -8,6 +8,14 @@ window.SEARCH_INDEX = [
   "url": "comprendre/presentation.html"
  },
  {
+  "mots": "objectifs valeurs priorités arbitrages contradictions cohérence gratuité règle verte efficience",
+  "publie": true,
+  "resume": "Les onze objectifs du programme dérivés de ses mesures, ce qu'il accepte de sacrifier, et les neuf endroits où il se contredit lui-même.",
+  "rubrique": "Comprendre",
+  "titre": "Ce que le programme cherche à obtenir",
+  "url": "comprendre/valeurs.html"
+ },
+ {
   "mots": "méthode analyse contre-analyse vérification priorité",
   "publie": true,
   "resume": "Analyse, contre-analyse, vérification externe : la chaîne de production et l'ordre de priorité en cas de désaccord.",
@@ -286,6 +294,14 @@ window.SEARCH_INDEX = [
   "rubrique": "Sources et méthode",
   "titre": "D'où viennent les chiffres",
   "url": "sources/d-ou-viennent-les-chiffres.html"
+ },
+ {
+  "mots": "bibliographie sources références rapports études organismes liens Cour des comptes INSEE DREES Sénat",
+  "publie": true,
+  "resume": "Tous les documents cités, classés par organisme, avec le lien vers l'étude et la page où lire la donnée.",
+  "rubrique": "Sources et méthode",
+  "titre": "La bibliographie",
+  "url": "sources/bibliographie.html"
  },
  {
   "mots": "à vérifier incertitude données manquantes confiance faible",

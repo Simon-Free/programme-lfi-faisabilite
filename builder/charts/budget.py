@@ -21,8 +21,10 @@ CONSOLIDE = [
     ("Dépenses — littérale, base consolidée", 389, 460, 509, 1),
     ("Dépenses — littérale, chaîne auditée", 389, 448, 509, 1),
     ("Dépenses — variantes appliquées", 334, 384, 434, 1),
-    ("Ressources nouvelles opposables", 31.4, 86.85, 142.3, 3),
-    ("dont recettes fiscales nouvelles", -0.2, 36.15, 72.5, 3),
+    # Ressources : 86,85 jusqu'au 2026-08-01 ; la refonte de la ligne M-6.7
+    # (socialisation bancaire) sur le prix d'acquisition reel retire 2,22.
+    ("Ressources nouvelles opposables", 29.34, 84.63, 139.93, 3),
+    ("dont recettes fiscales nouvelles", -2.26, 33.93, 70.13, 3),
 ]
 
 
@@ -39,16 +41,16 @@ def chiffrage_consolide():
     ]
     corps = (
         heros(
-            "18,9 %",
+            "18,4 %",
             "des dépenses nouvelles sont couvertes par une ressource nouvelle",
-            "fourchette 6,8 à 30,9 % ; 14,1 % si les économies vont en "
-            "réduction de la dépense. Il manque 373 Md€/an",
+            "fourchette 6,4 à 30,4 % ; 13,5 % si les économies vont en "
+            "réduction de la dépense. Il manque 376 Md€/an",
         )
         + legende([("mark--1", "Dépenses nouvelles"),
                    ("mark--3", "Ressources nouvelles")])
         + barres(lignes, unite="Md€/an")
         + jauge(
-            18.9,
+            18.4,
             "Moins d’un euro sur cinq",
             "est financé par une ressource nouvelle identifiée. Les quatre "
             "autres ne le sont pas.",
@@ -61,7 +63,7 @@ def chiffrage_consolide():
             for libelle, bas, central, haut, _ in CONSOLIDE
         ]
         + [["<strong>Solde à combler (littérale, base consolidée)</strong>",
-            "−429", "<strong>−373</strong>", "−318"],
+            "−431", "<strong>−376</strong>", "−320"],
            ["Solde annuel à combler (variantes appliquées, base 448)", "−251",
             "−340", "−420"]],
         "Dépenses et ressources nouvelles du programme, en Md€/an.",
@@ -71,22 +73,25 @@ def chiffrage_consolide():
         "Les ressources couvrent moins d’un cinquième des dépenses",
         "<strong>Comment lire.</strong> La barre pleine va jusqu'à la borne "
         "basse de la fourchette, la barre claire jusqu'à la borne haute. "
+        "Une ligne dont la fourchette enjambe zéro n'a pas cette double "
+        "barre : elle est coupée au zéro, la part située à gauche indiquant "
+        "que la mesure peut coûter au lieu de rapporter. "
         "Même en retenant la borne haute des ressources et la borne basse des "
         "dépenses, l'écart ne se referme pas.",
         corps,
         donnees,
         SOURCE,
         note="La ligne « ressources nouvelles opposables » réunit les recettes "
-        "fiscales du compte complet (36,2), les économies proposées par le "
+        "fiscales du compte complet (33,9), les économies proposées par le "
         "programme et non encore comptées (3,6), les effets de retour "
         "budgétaires (40,0), les dividendes des entités publiques (2,35), la "
         "TVA sur la consommation induite (4,5) et les recettes de sanction "
-        "(0,25) — soit 86,9 Md€/an. En face, la dépense récurrente consolidée "
+        "(0,25) — soit 84,6 Md€/an. En face, la dépense récurrente consolidée "
         "vaut 460 Md€/an : l'enveloppe climat des chapitres 12 et 13 y entre "
         "pour 35,0 à 75,6 Md€/an, c'est-à-dire la reconstruction ligne à ligne "
         "des mesures, sans les quatre postes que l'objectif du programme "
         "appellerait mais qu'aucune de ses mesures ne finance. "
-        "<strong>Il manque 373 Md€/an, soit 12,5 points de PIB.</strong>",
+        "<strong>Il manque 376 Md€/an, soit 12,6 points de PIB.</strong>",
     )
 
 

@@ -284,6 +284,144 @@ a.footnote-ref {
   font-family: var(--font-prose);
 }
 
+/* --- Appareil de sources ------------------------------------------------ */
+.sources-fiche__compte,
+.biblio-compte {
+  font-family: var(--font-ui);
+  font-size: var(--step--1);
+  color: var(--text-secondary);
+}
+.biblio-compte {
+  list-style: none;
+  padding: 0.75rem 1rem;
+  margin: 0 0 1.5rem;
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.biblio-compte li + li {
+  margin-top: 0.35rem;
+}
+.sources-liste {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.source {
+  padding: 0.9rem 0 0.9rem 1rem;
+  border-left: 3px solid var(--border-strong);
+  margin-bottom: 1.1rem;
+}
+.source--faible {
+  border-left-style: dashed;
+  border-left-color: var(--confidence-low);
+}
+.source > * {
+  margin: 0 0 0.3rem;
+}
+.source > :last-child {
+  margin-bottom: 0;
+}
+.source__tire {
+  font-family: var(--font-prose);
+}
+.source__provenance {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: var(--step--1);
+}
+.source__explique,
+.source__reperage,
+.source__usages {
+  font-family: var(--font-ui);
+  font-size: var(--step--1);
+  color: var(--text-secondary);
+}
+.source__titre {
+  font-family: var(--font-ui);
+  font-size: var(--step--1);
+}
+
+/* Les trois etats sont toujours ecrits : la couleur ne porte jamais seule
+   l'information, et chaque pastille est doublee d'un signe typographique. */
+.source__acces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  font-family: var(--font-ui);
+  font-size: var(--step--1);
+}
+.source__etat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid currentcolor;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+.source__etat::before {
+  font-weight: 700;
+}
+.source__etat--verifie {
+  color: var(--confidence-high);
+  background: var(--confidence-high-bg);
+}
+.source__etat--verifie::before {
+  content: "\2713";
+}
+.source__etat--non-verifie {
+  color: var(--confidence-medium);
+  background: var(--confidence-medium-bg);
+}
+.source__etat--non-verifie::before {
+  content: "?";
+}
+.source__etat--sans-lien {
+  color: var(--confidence-low);
+  background: var(--confidence-low-bg);
+}
+.source__etat--sans-lien::before {
+  content: "\2014";
+}
+.source__etat--faible {
+  color: var(--severity-major);
+  background: var(--severity-major-bg);
+}
+.source__etat--faible::before {
+  content: "\26A0";
+}
+.source__lien::after {
+  content: " \2197";
+}
+.biblio-sommaire ol {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  columns: 2;
+  column-gap: 2rem;
+  font-family: var(--font-ui);
+  font-size: var(--step--1);
+}
+.biblio-sommaire li {
+  break-inside: avoid;
+  margin-bottom: 0.25rem;
+}
+.biblio-sommaire span {
+  color: var(--text-secondary);
+}
+.biblio-organisme {
+  margin-bottom: 2.5rem;
+}
+.biblio-organisme__explique {
+  font-family: var(--font-ui);
+  font-size: var(--step--1);
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
 /* --- Divers ------------------------------------------------------------- */
 .lorem-flag {
   font-family: var(--font-ui);

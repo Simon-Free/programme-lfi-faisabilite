@@ -18,6 +18,7 @@ que si son contenu a changé — d'où l'idempotence.
 ## Subfolders
 | Folder | Description |
 |--------|-------------|
+| `bibliographie/` | Sources lues dans `sources/*.json` : liste en pied de fiche et page bibliographie |
 | `charts/` | Les huit infographies, en SVG écrit à la main, et leur registre |
 | `markdown/` | Convertisseur markdown maison (aucune dépendance) |
 | `render/` | Gabarit HTML et construction des pages |

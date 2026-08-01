@@ -1,4 +1,10 @@
-"""Les 503 mesures chiffrees, une par point, chapitre par chapitre.
+"""Les mesures au cout verifie, une par point, chapitre par chapitre.
+
+N'y figurent que les mesures dont le § 4 « Chiffrage consolide » d'une analyse
+publie le cout net **a leur seul nom**. Une mesure chiffree dans un bloc qui en
+couvre plusieurs n'a pas de part propre, et aucune cle ne permet de l'inventer :
+elle sort de la figure plutot que d'y prendre une valeur qui n'est pas la sienne.
+
 
 Les montants s'etalent de 1 million a 40 milliards : quatre ordres de
 grandeur. Une echelle lineaire ecraserait 90 % des mesures contre l'axe,
@@ -30,9 +36,11 @@ TITRES = {
 }
 
 SOURCE = (
-    "Source : rubrique « c. Chiffrage » de chaque analyse de chapitre, "
-    "consolidée par la transverse 17 (audit de couverture). Les montants "
-    "font foi dans la fiche du chapitre, pas ici."
+    "Source : § 4 « Chiffrage consolidé » de chaque analyse de chapitre, "
+    "colonne du coût net, lue mesure par mesure ; milieu de la fourchette "
+    "quand l'analyse en publie une. L'inventaire des mesures vient de la "
+    "transverse 17 (audit de couverture), ses colonnes de montants ne sont "
+    "pas utilisées. Les montants font foi dans la fiche du chapitre, pas ici."
 )
 
 
@@ -122,27 +130,35 @@ def mesures_par_montant():
              _lisible(e["montant"]), e["nature"]]
             for e in grosses
         ],
-        "Les quinze mesures les plus coûteuses. L'inventaire complet des %d "
-        "mesures chiffrées est dans le dossier." % len(retenues),
+        "Les quinze mesures les plus coûteuses parmi les %d dont le coût est "
+        "vérifié mesure par mesure. L'inventaire complet des mesures du "
+        "programme est dans le dossier." % len(retenues),
     )
 
     note = (
-        "Échelle logarithmique : chaque graduation vaut dix fois la "
-        "précédente. %d mesures portent un montant exploitable ; %d n'en "
-        "portent aucun dans le dossier, et %d ont été écartées parce que la "
-        "valeur publiée était une grandeur de contexte — le budget d'un "
-        "secteur, un stock — et non le coût de la mesure."
-        % (len(retenues), muettes, len(ecartees))
+        "<strong>Échelle logarithmique</strong> : chaque graduation vaut dix "
+        "fois la précédente. <strong>%d mesures sont affichées</strong> — "
+        "celles dont une analyse de chapitre publie le coût net à son propre "
+        "nom. <strong>%d ne le sont pas</strong> : le dossier les chiffre dans "
+        "un bloc qui en couvre plusieurs, ou par une enveloppe qu'il ne "
+        "ventile pas, et leur part ne s'en déduit pas. <strong>%d autres ne "
+        "portent aucun montant nulle part.</strong> Les points affichés sont "
+        "donc un coût vérifié, mesure par mesure, et non l'inventaire complet "
+        "du programme : additionner ce nuage ne redonne aucun total publié."
+        % (len(retenues), len(ecartees), len(muettes))
     )
 
     return figure(
         "mesures-par-montant",
-        "Neuf mesures sur dix pèsent moins d'un milliard : le coût vient d'une poignée",
-        "Chaque point est une mesure du programme, placée selon son coût "
-        "annuel. La médiane est à 250 millions d'euros, mais l'échelle "
-        "s'étend sur quatre ordres de grandeur : quelques mesures des "
-        "chapitres travail, solidarité et bifurcation écologique portent "
-        "l'essentiel du total. Survolez un point pour lire la mesure.",
+        "Quatre mesures sur cinq pèsent moins d'un milliard : le coût vient "
+        "d'une poignée",
+        "Chaque point est une mesure <strong>dont une analyse de chapitre "
+        "publie le coût à son nom</strong>, placée selon ce coût. La médiane "
+        "est à 220 millions d'euros, mais l'échelle s'étend sur quatre ordres "
+        "de grandeur : une dizaine de mesures — planification écologique, "
+        "retraites, grands chantiers, garantie d'autonomie — pèsent à elles "
+        "seules la moitié de ce qui est affiché ici. Survolez un point pour "
+        "lire la mesure.",
         legende([
             ("mark--1", "Coût récurrent, par an"),
             ("mark--2", "Coût ponctuel, une fois"),

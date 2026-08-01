@@ -88,12 +88,36 @@ def _figure(title, lines):
     return rendre_figure(identifiant)
 
 
+def _sources(title, lines):
+    """`::: sources <fiche>` — la bibliographie de la fiche courante.
+
+    L'import est differe pour la meme raison que celui des figures : le paquet
+    `bibliographie` lit `markdown.inline`, et un import en tete fermerait le
+    cycle.
+    """
+    from ...bibliographie import rendre_liste
+
+    appel = title.strip() or " ".join(line.strip() for line in lines)
+    return rendre_liste(appel)
+
+
+def _bibliographie():
+    """`::: bibliographie` — toutes les sources du dossier, par organisme."""
+    from ...bibliographie import rendre_bibliographie
+
+    return rendre_bibliographie()
+
+
 def render_container(kind, title, lines, parse_inner, footnote_ids):
     """Rend un bloc `:::`. Un type inconnu retombe sur un encadre de methode."""
     if kind == "chiffres":
         return _stats(lines, footnote_ids)
     if kind == "graphique":
         return _figure(title, lines)
+    if kind == "sources":
+        return _sources(title, lines)
+    if kind == "bibliographie":
+        return _bibliographie()
     if kind not in CALLOUT_TITLES:
         return (
             '<div class="callout callout--methode"><p class="callout__title">'

@@ -5,6 +5,12 @@ Une fiche markdown appelle une figure par son identifiant :
     ::: graphique chiffrage-consolide
     :::
 
+Une figure declinable prend ses arguments a la suite, separes par des
+espaces — ici le numero du chapitre a detailler :
+
+    ::: graphique detail-mesures 5
+    :::
+
 Le dessin vit ici, en SVG ecrit a la main, et non dans la fiche : le
 convertisseur markdown echappe le HTML brut, et une figure de deux cents
 lignes de SVG noierait le texte qu'elle illustre.
@@ -17,6 +23,7 @@ from .capital_international import fiscalite_capital_comparee
 from .capital_rendement import rendement_capital
 from .capital_stock import patrimoine_composition
 from .decaissement import profil_decaissement
+from .detail_mesures import detail_mesures
 from .echelle_budget import echelle_budget
 from .institutions import calendrier_legislatif, risque_constitutionnel
 from .mesures import mesures_par_montant
@@ -46,20 +53,27 @@ FIGURES = {
     "gisements-capital": gisements_capital,
     "echelle-budget": echelle_budget,
     "mesures-par-montant": mesures_par_montant,
+    "detail-mesures": detail_mesures,
 }
 
 
-def rendre_figure(identifiant):
-    """Rend la figure demandee, ou un encadre lisible si l'identifiant est faux."""
-    fabrique = FIGURES.get(identifiant.strip())
+def rendre_figure(appel):
+    """Rend la figure demandee, ou un encadre lisible si l'identifiant est faux.
+
+    `appel` est l'identifiant, suivi le cas echeant de ses arguments :
+    « detail-mesures 5 ». Les figures sans argument, qui sont la majorite,
+    s'appellent exactement comme avant.
+    """
+    identifiant, *arguments = appel.split() or [""]
+    fabrique = FIGURES.get(identifiant)
     if fabrique is None:
         return (
             '<div class="callout callout--attention"><p class="callout__title">'
             "Figure inconnue</p><p>Aucune figure ne porte l'identifiant "
             "« %s ». Figures disponibles : %s.</p></div>"
-            % (identifiant.strip(), ", ".join(sorted(FIGURES)))
+            % (identifiant, ", ".join(sorted(FIGURES)))
         )
-    return fabrique()
+    return fabrique(*arguments)
 
 
 __all__ = ["FIGURES", "rendre_figure"]

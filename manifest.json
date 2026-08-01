@@ -59,16 +59,25 @@
       "slug": "methode",
       "source": "methode.md",
       "rubrique": "comprendre",
-      "ordre": 2,
+      "ordre": 3,
       "titre": "Comment cette expertise a été faite",
       "resume": "Analyse, contre-analyse, vérification externe : la chaîne de production et l'ordre de priorité en cas de désaccord.",
       "mots": "méthode analyse contre-analyse vérification priorité"
     },
     {
+      "slug": "valeurs",
+      "source": "valeurs.md",
+      "rubrique": "comprendre",
+      "ordre": 2,
+      "titre": "Ce que le programme cherche à obtenir",
+      "resume": "Les onze objectifs du programme dérivés de ses mesures, ce qu'il accepte de sacrifier, et les neuf endroits où il se contredit lui-même.",
+      "mots": "objectifs valeurs priorités arbitrages contradictions cohérence gratuité règle verte efficience"
+    },
+    {
       "slug": "limites",
       "source": "limites.md",
       "rubrique": "comprendre",
-      "ordre": 3,
+      "ordre": 4,
       "titre": "Ce que cette expertise ne dit pas",
       "resume": "Les trois avertissements de lecture et les zones où le travail reste incomplet.",
       "mots": "limites avertissements incertitude périmètre"
@@ -371,10 +380,19 @@
       "mots": "sources chiffrage typage LFI tiers estimation traçabilité"
     },
     {
+      "slug": "bibliographie",
+      "source": "bibliographie.md",
+      "rubrique": "sources",
+      "ordre": 2,
+      "titre": "La bibliographie",
+      "resume": "Tous les documents cités, classés par organisme, avec le lien vers l'étude et la page où lire la donnée.",
+      "mots": "bibliographie sources références rapports études organismes liens Cour des comptes INSEE DREES Sénat"
+    },
+    {
       "slug": "a-verifier",
       "source": "a_verifier.md",
       "rubrique": "sources",
-      "ordre": 2,
+      "ordre": 3,
       "titre": "Ce qui reste à vérifier",
       "resume": "Les points non confirmés sur source primaire, et qui détient la donnée manquante.",
       "mots": "à vérifier incertitude données manquantes confiance faible"
@@ -383,7 +401,7 @@
       "slug": "journal-des-modifications",
       "source": "journal_des_modifications.md",
       "rubrique": "sources",
-      "ordre": 3,
+      "ordre": 4,
       "titre": "Journal des modifications",
       "resume": "Ce que le site publiait, ce qu'il publie désormais, pourquoi, et le document qui l'établit.",
       "mots": "journal modifications corrections historique révisions traçabilité changelog"

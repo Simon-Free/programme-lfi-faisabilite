@@ -46,9 +46,12 @@ POSTES = [
     ("Capital au barème", 1.5, 3.5, ""),
     ("Taxe Zucman, après imputation sur l'ISF", 0.5, 3.0,
      "Impôt plancher imputable sur l'ISF : non additif."),
-    ("Socialisation bancaire", 0.6, 3.6,
-     "Nette de la charge de portage, 0,6 à 1,4 Md€/an, omise par le "
-     "chapitre."),
+    ("Socialisation bancaire", -1.42, 1.19,
+     "Nette de la charge de portage, 5,79 à 8,40 Md€/an, omise par le "
+     "chapitre. Le pôle BNP Paribas + Société générale vaut 180,9 Md€ au "
+     "cours et 235 à 262 avec la prime de contrôle que l'offre publique "
+     "obligatoire impose : la charge excède alors le dividende, et la "
+     "ligne devient négative."),
     ("Arbitrage de dividendes (CumEx)", 0.8, 1.8, ""),
     ("Exit tax et cinq mesures mineures", 1.05, 2.6, ""),
 ]
@@ -135,18 +138,18 @@ def sources_recettes():
         ["Poste", "Bas (Md€/an)", "Haut (Md€/an)"],
         [[libelle, nombre(bas), nombre(haut)]
          for libelle, bas, haut, _ in POSTES]
-        + [["Sous-total des postes positifs", "42,95", "117,1"]]
+        + [["Sous-total des postes positifs", "40,93", "114,69"]]
         + [["moins " + libelle, "−" + nombre(bas), "−" + nombre(haut)]
            for libelle, bas, haut, _ in RETRANCHEMENTS]
         + [["Rendement disponible pour le solde, tel que publié", "10,9",
             "68,6"],
            ["<strong>Le même, refait ligne à ligne</strong>",
-            "<strong>−0,5</strong>", "68,7"],
+            "<strong>−2,6</strong>", "66,3"],
            ["Total retenu après révision de la pré-emption", "18,9", "77,6"],
            ["<strong>Compte de recettes corrigé, rebranché sur le bloc "
-            "consolidé</strong>", "<strong>−0,2</strong>",
-            "<strong>72,5</strong>"],
-           ["Valeur centrale corrigée", "36,2", "36,2"]],
+            "consolidé</strong>", "<strong>−2,3</strong>",
+            "<strong>70,1</strong>"],
+           ["Valeur centrale corrigée", "33,9", "33,9"]],
         "Compte de recettes nouvelles, poste par poste, en Md€/an de régime.",
     )
     return figure(
@@ -176,10 +179,10 @@ def sources_recettes():
         "défavorable au programme.</strong> La borne basse publiée, 10,9 "
         "Md€/an, n'est pas reconstituable : c'est le rendement brut retraité "
         "recopié sans lui appliquer les trois lignes qui suivent. Refaite, "
-        "elle vaut −0,5 — <strong>dans le scénario bas, le compte de recettes "
+        "elle vaut −2,6 — <strong>dans le scénario bas, le compte de recettes "
         "du programme est nul</strong>, et le signe n'est pas garanti. En "
         "sens inverse, le rebranchement du bloc consolidé des cinq barèmes "
-        "sur le compte complet porte la valeur centrale à 36,2 Md€/an. "
+        "sur le compte complet porte la valeur centrale à 33,9 Md€/an. "
         "Les totaux successivement publiés sur ce site — 18,9 / 44,3 / 77,6 "
         "puis 21,2 — ne sont pas la somme arithmétique du panneau 1 moins le "
         "panneau 2, et surtout <strong>ils ne mesuraient que les cinq barèmes "
@@ -187,5 +190,5 @@ def sources_recettes():
         "republiée après ces arbitrages : elle est donnée ici telle que le "
         "compte de recettes l'établit, et les totaux corrigés figurent dans "
         "le tableau de données. Le chiffrage complet des ressources "
-        "opposables — 86,9 Md€/an — vit dans la figure du taux de couverture.",
+        "opposables — 84,6 Md€/an — vit dans la figure du taux de couverture.",
     )

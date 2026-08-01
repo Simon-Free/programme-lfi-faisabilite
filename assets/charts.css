@@ -63,6 +63,10 @@
   height: auto;
   overflow: visible;
 }
+/* Bande de couverture : elle precede la legende, qui la commente. */
+.chart__svg--bande {
+  margin-bottom: var(--space-3);
+}
 
 /* Marques : fines, arrondies au bout, jamais bordees. */
 .mark {
@@ -77,7 +81,24 @@
 .mark--7 { fill: var(--cat-7); }
 .mark--8 { fill: var(--cat-8); }
 
+/* Absence de donnee : une hachure, jamais une teinte. Une couleur se lit
+   comme une valeur ; « le dossier ne chiffre pas cette mesure » n'en est pas
+   une. La hachure sert aussi de canal accessible en impression. */
+.chart__hatch { fill: url(#hachure-sans-chiffrage); }
+.chart__hatch-bg { fill: var(--surface-sunken); }
+.chart__hatch-line {
+  stroke: var(--text-secondary);
+  stroke-width: 2;
+}
+
 /* Statuts reserves : jamais une couleur de serie, toujours avec un libelle. */
+/* Valeur negative : un signe qui s'inverse est un renversement de sens, pas
+   une petite valeur. Il porte donc un jeton de statut, jamais la teinte de la
+   serie — sinon la couleur dirait « autre poste » la ou elle doit dire
+   « le sens s'inverse ». La position sous le zero, le signe « − » de
+   l'etiquette et la mention sous la figure la doublent : jamais la couleur
+   seule. */
+.mark--negatif { fill: var(--severity-blocking); }
 .mark--blocking { fill: var(--severity-blocking); }
 .mark--major { fill: var(--severity-major); }
 .mark--medium { fill: var(--confidence-medium); }
@@ -110,6 +131,13 @@
   stroke: var(--text-secondary);
   stroke-width: 2;
 }
+/* Repere de zero : il n'existe que si l'echelle descend sous zero. Sans lui,
+   une barre qui part vers la gauche n'a plus d'origine lisible. Plus appuye
+   que la grille, moins qu'un seuil commente. */
+.chart__zero {
+  stroke: var(--text-secondary);
+  stroke-width: 1.5;
+}
 .chart__threshold-label,
 .chart__tick,
 .chart__axis-unit {
@@ -125,6 +153,21 @@
 .chart__row-label {
   fill: var(--text-primary);
   font-size: 12px;
+}
+/* Inventaire d'un chapitre : jusqu'a vingt lignes empilees. Un cran plus
+   petit, sinon la gouttiere tronquerait un intitule sur deux. */
+.chart__row-label--dense {
+  font-size: 11px;
+}
+/* Tige d'une sucette : c'est la pastille qui porte la valeur, la tige ne
+   fait que rattacher la ligne a l'axe. Elle reste donc discrete. */
+.chart__stem {
+  stroke: var(--border);
+  stroke-width: 1.5;
+}
+/* Plage des mesures repliees : une etendue, jamais une somme. */
+.chart__spread {
+  fill: var(--border-strong);
 }
 /* Titre d'un empilement : il vit au-dessus de la barre, pas dans une
    gouttiere — un intitule de composition est trop long pour une marge. */
@@ -152,6 +195,13 @@
   font-size: 12px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
+}
+.chart__value--dense {
+  font-size: 11px;
+  font-weight: 500;
+}
+.chart__value--muted {
+  fill: var(--text-secondary);
 }
 
 .chart__mark-group {
@@ -197,6 +247,14 @@
 .chart__puce.mark--6 { background: var(--cat-6); }
 .chart__puce.mark--7 { background: var(--cat-7); }
 .chart__puce.mark--8 { background: var(--cat-8); }
+.chart__puce.mark--negatif { background: var(--severity-blocking); }
+.chart__puce.mark--sans-chiffrage {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--surface-sunken) 0 3px,
+    var(--text-secondary) 3px 5px
+  );
+}
 
 /* --- Chiffre-heros et jauge --------------------------------------------- */
 .chart__hero {

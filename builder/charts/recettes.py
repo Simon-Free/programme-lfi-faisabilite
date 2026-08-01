@@ -22,17 +22,20 @@ SOURCE = (
     "(taux de couverture) et § 8.1 (décomposition du compte)."
 )
 
-# (libelle, montant, note) — les 86,9 Md€/an de ressources opposables.
+# (libelle, montant, note) — les 84,6 Md€/an de ressources opposables.
 ECART = [
     ("Cinq barèmes fiscaux du chapitre 6", 21.2,
      "Impôt sur le revenu, contribution sociale généralisée, impôt sur les "
      "sociétés, impôt sur la fortune, successions. Aucun barème n'étant "
      "publié, l'amplitude de ce seul bloc est d'un facteur cinq."),
-    ("Douze autres lignes de recette", 14.95,
+    ("Douze autres lignes de recette", 12.73,
      "Transactions financières, niches, fraude, quotient conjugal, "
      "superprofits, capital au barème, impôt universel, taxe Zucman, "
      "socialisation bancaire, CumEx, foncier progressif, exit tax — net des "
-     "lignes de coût et du retraitement."),
+     "lignes de coût et du retraitement. La socialisation bancaire y entre "
+     "pour −1,42 à +1,19 : au prix d'acquisition réel du pôle bancaire, la "
+     "charge de portage excède le dividende dès qu'une prime de contrôle "
+     "est payée."),
     ("Effets de retour — dépenses évitées", 22.2,
      "Calculées chapitre par chapitre, perdues à la consolidation, qui n'a "
      "retenu que la colonne des coûts. C'est une dépense qui n'a pas lieu, "
@@ -64,14 +67,14 @@ def _panneau(titre, lignes, unite):
 def couverture_recettes():
     corps = (
         heros(
-            "18,9 %",
+            "18,4 %",
             "des dépenses nouvelles sont couvertes par une ressource nouvelle",
-            "moins d'un euro sur cinq ; il manque 373 Md€/an",
+            "moins d'un euro sur cinq ; il manque 376 Md€/an",
         )
         + legende([("mark--2", "Prélèvements et recettes nouvelles"),
                    ("mark--1", "Dépenses évitées et économies")])
         + _panneau(
-            "D'où viennent les 86,9 Md€/an de ressources opposables",
+            "D'où viennent les 84,6 Md€/an de ressources opposables",
             [{"libelle": libelle, "bas": montant,
               "serie": 1 if libelle.startswith(
                   ("Effets de retour — dépenses", "Économies")) else 2,
@@ -80,9 +83,9 @@ def couverture_recettes():
             "Md€/an de ressource opposable",
         )
         + jauge(
-            18.9,
-            "Dix-neuf euros sur cent",
-            "voilà ce qu'une ressource nouvelle identifiée finance. Les 81,1 "
+            18.4,
+            "Dix-huit euros sur cent",
+            "voilà ce qu'une ressource nouvelle identifiée finance. Les 81,6 "
             "autres ne le sont pas.",
         )
     )
@@ -90,20 +93,20 @@ def couverture_recettes():
         ["Lecture", "Dépense (Md€/an)", "Ressources (Md€/an)",
          "Solde à combler", "Couverture"],
         [["<strong>Point central</strong>", "460",
-          "<strong>86,9</strong>", "<strong>−373</strong>",
-          "<strong>18,9 %</strong>"],
-         ["Fourchette", "460", "31,4 à 142,3", "−429 à −318",
-          "6,8 à 30,9 %"],
-         ["Convention alternative — économies au dénominateur", "434,7",
-          "61,1", "−373", "14,1 %"]],
+          "<strong>84,6</strong>", "<strong>−376</strong>",
+          "<strong>18,4 %</strong>"],
+         ["Fourchette", "460", "29,3 à 139,9", "−431 à −320",
+          "6,4 à 30,4 %"],
+         ["Convention alternative — économies au dénominateur", "434,6",
+          "58,8", "−376", "13,5 %"]],
         "Solde annuel à combler et taux de couverture des dépenses nouvelles "
         "par les ressources nouvelles opposables.",
     )
     return figure(
         "couverture-recettes",
-        "Moins d'un euro sur cinq est couvert — il reste 373 Md€ à trouver chaque année",
+        "Moins d'un euro sur cinq est couvert — il reste 376 Md€ à trouver chaque année",
         "<strong>Comment lire.</strong> Chaque barre est une composante des "
-        "86,9 Md€/an de ressources que l'on peut opposer aux 460 Md€/an de "
+        "84,6 Md€/an de ressources que l'on peut opposer aux 460 Md€/an de "
         "dépense nouvelle. Elles ne sont pas de même nature : un prélèvement "
         "nouveau crée une recette, une dépense évitée supprime une charge. "
         "La jauge donne la part de la dépense qu'une ressource identifiée "
@@ -114,9 +117,9 @@ def couverture_recettes():
         note="<strong>Le solde, et non le taux, porte le verdict.</strong> "
         "Les dépenses évitées et les économies (25,8 Md€/an) ne sont pas des "
         "prélèvements nouveaux : portées en réduction du dénominateur plutôt "
-        "qu'au numérateur, elles donnent un taux de 14,1 % — et le même "
-        "solde de 373, qui est invariant. La borne basse du compte de "
-        "recettes vaut −0,2 : dans le scénario défavorable, le programme "
+        "qu'au numérateur, elles donnent un taux de 13,5 % — et le même "
+        "solde de 376, qui est invariant. La borne basse du compte de "
+        "recettes vaut −2,3 : dans le scénario défavorable, le programme "
         "n'a aucune recette nouvelle nette, et conserve ses 460 Md€/an de "
         "dépense.",
     )
