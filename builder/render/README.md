@@ -6,7 +6,7 @@ Transforme le manifeste et les fiches converties en pages HTML complètes.
 ## Usage
 | Fichier | Rôle |
 |--------|------|
-| `template.py` | Gabarit commun : en-tête, navigation, fil d'Ariane, pied de page |
+| `template.py` | Gabarit commun : en-tête, navigation, bandeau d'avertissement, fil d'Ariane, pied de page |
 | `pages.py` | Page de fiche (sommaire, pagination) et page de rubrique |
 | `home.py` | Accueil, page de recherche et index de recherche |
 

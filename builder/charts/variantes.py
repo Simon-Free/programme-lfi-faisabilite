@@ -40,8 +40,8 @@ ANNUELLES = [
 CAPITAL = [
     ("Échéance des concessions autoroutières", 2, 47, 55,
      "Attendre 2031-2036. « Aucun véhicule — une décision de ne pas "
-     "légiférer. » Central 51 Md€. Le rachat anticipé détruit 1,5 à "
-     "16,2 Md€ de valeur, la fiscalité perdue écrasant l'écart de taux."),
+     "légiférer. » Central 51 Md€. Le rachat anticipé détruit 1,6 à "
+     "15,6 Md€ de valeur, la fiscalité perdue écrasant l'écart de taux."),
 ]
 
 
@@ -56,7 +56,7 @@ def _lignes(source, serie):
 def variantes_rentables():
     corps = (
         heros(
-            "135 à 142 Md€/an",
+            "≈ 140 Md€/an",
             "d'économies sans renoncer à un seul objectif du programme",
             "plus 165 à 283 Md€ de capital évité",
         )
@@ -82,7 +82,7 @@ def variantes_rentables():
     )
     return figure(
         "variantes-rentables",
-        "Cent trente-cinq milliards par an s'économisent sans renoncer à un objectif",
+        "Cent quarante milliards par an s'économisent sans renoncer à un objectif",
         "<strong>Comment lire.</strong> Deux panneaux séparés parce que les "
         "deux unités ne s'additionnent pas : une économie annuelle revient "
         "chaque année, un capital évité ne se verse qu'une fois. Les mettre "

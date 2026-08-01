@@ -100,6 +100,29 @@
   background: var(--surface-sunken);
 }
 
+/* --- Avertissement de fabrication (toutes les pages) -------------------- */
+/* Lisible sans etre criard : fond sourd, filet lateral, texte secondaire. */
+.site-notice {
+  background: var(--surface-sunken);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-ui);
+}
+.site-notice div {
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: var(--space-3) var(--space-4);
+  border-left: 3px solid var(--confidence-medium);
+}
+.site-notice p {
+  margin: 0;
+  font-size: var(--step--1);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+.site-notice strong {
+  color: var(--text-primary);
+}
+
 /* --- Structure de page -------------------------------------------------- */
 .breadcrumb {
   font-family: var(--font-ui);

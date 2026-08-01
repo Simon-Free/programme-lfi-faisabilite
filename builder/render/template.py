@@ -25,6 +25,7 @@ DOCUMENT = """<!doctype html>
 <body>
 <a class="skip-link" href="#contenu">Aller au contenu</a>
 {header}
+{notice}
 <div class="layout">
 {breadcrumb}
 </div>
@@ -78,6 +79,22 @@ def _header(site, rubriques, base, active):
     )
 
 
+def _notice(base):
+    """Avertissement de fabrication, present sur toutes les pages."""
+    return (
+        '<aside class="site-notice" aria-label="Nature de ce dossier"><div>'
+        "<p><strong>Démonstrateur.</strong> Ce dossier a été produit par "
+        "Claude Opus 5, le modèle d'Anthropic, orchestré en agents multiples "
+        "travaillant en parallèle, sous supervision humaine. Tout n'a pas été "
+        "vérifié : 301 des 518 références citées ont été ouvertes et "
+        "contrôlées, et une passe de relecture y a trouvé des citations "
+        "inexactes, corrigées depuis. "
+        '<a href="%scomprendre/methode.html#comment-ce-dossier-a-ete-fabrique">'
+        "Comment ce dossier a été fabriqué</a>.</p>"
+        "</div></aside>" % base
+    )
+
+
 def _breadcrumb(trail):
     """trail : liste de couples (libelle, url ou None pour la page courante)."""
     if not trail:
@@ -121,6 +138,7 @@ def render_page(site, rubriques, **page):
         base=base,
         bootstrap=THEME_BOOTSTRAP,
         header=_header(site, rubriques, base, page.get("active", "")),
+        notice=_notice(base),
         breadcrumb=_breadcrumb(page.get("trail", [])),
         body=page["body"],
         footer=_footer(site, base),
