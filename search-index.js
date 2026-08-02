@@ -318,5 +318,13 @@ window.SEARCH_INDEX = [
   "rubrique": "Sources et méthode",
   "titre": "Journal des modifications",
   "url": "sources/journal-des-modifications.html"
+ },
+ {
+  "mots": "travaux avancement état suivi chantiers en cours reste à faire renoncements feuille de route",
+  "publie": true,
+  "resume": "L'état d'avancement du dossier : les chantiers clos, ceux qui sont ouverts, ce qui attend, et ce qui ne sera pas fait.",
+  "rubrique": "Sources et méthode",
+  "titre": "Ce qui est fait, ce qui reste",
+  "url": "sources/travaux.html"
  }
 ];

@@ -85,13 +85,16 @@ def _notice(base):
         '<aside class="site-notice" aria-label="Nature de ce dossier"><div>'
         "<p><strong>Démonstrateur.</strong> Ce dossier a été produit par "
         "Claude Opus 5, le modèle d'Anthropic, orchestré en agents multiples "
-        "travaillant en parallèle, sous supervision humaine. Tout n'a pas été "
-        "vérifié : 301 des 518 références citées ont été ouvertes et "
-        "contrôlées, et une passe de relecture y a trouvé des citations "
-        "inexactes, corrigées depuis. "
+        "travaillant en parallèle. <strong>Aucun chiffre n'a été vérifié par "
+        "un humain.</strong> La supervision humaine a porté sur la méthode et "
+        "sur les objections de fond, pas sur le contrôle pièce à pièce. Les "
+        "301 références sur 518 dites « vérifiées » l'ont été par une machine, "
+        "et une relecture a trouvé parmi elles des citations inexactes. "
         '<a href="%scomprendre/methode.html#comment-ce-dossier-a-ete-fabrique">'
-        "Comment ce dossier a été fabriqué</a>.</p>"
-        "</div></aside>" % base
+        "Comment ce dossier a été fabriqué</a> · "
+        '<a href="%ssources/travaux.html">Ce qui est fait, ce qui reste'
+        "</a>.</p>"
+        "</div></aside>" % (base, base)
     )
 
 

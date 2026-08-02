@@ -405,6 +405,15 @@
       "titre": "Journal des modifications",
       "resume": "Ce que le site publiait, ce qu'il publie désormais, pourquoi, et le document qui l'établit.",
       "mots": "journal modifications corrections historique révisions traçabilité changelog"
+    },
+    {
+      "slug": "travaux",
+      "source": "travaux.md",
+      "rubrique": "sources",
+      "ordre": 5,
+      "titre": "Ce qui est fait, ce qui reste",
+      "resume": "L'état d'avancement du dossier : les chantiers clos, ceux qui sont ouverts, ce qui attend, et ce qui ne sera pas fait.",
+      "mots": "travaux avancement état suivi chantiers en cours reste à faire renoncements feuille de route"
     }
   ]
 }
