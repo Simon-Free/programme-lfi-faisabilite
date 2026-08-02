@@ -25,26 +25,47 @@ MESSAGES = {
 
 
 def decompte(entrees):
-    """Le compte honnete : combien de sources, combien verifiees, combien sans lien."""
-    total = len(entrees)
-    verifiees = sum(
-        1
-        for entree in entrees
-        if url_utilisable(entree.get("url")) and entree.get("url_verifiee")
+    """Le compte honnete, en distinguant la lecture de la simple resolution.
+
+    « Verifiee » veut dire que quelqu'un a ouvert le document et constate qu'il
+    porte bien ce qu'on lui attribue. « Resout » veut seulement dire que
+    l'adresse repond et sert un document : c'est une machine qui l'a constate,
+    sans rien lire. Les deux comptes ne se melangent pas.
+    """
+    avec_lien = [entree for entree in entrees if url_utilisable(entree.get("url"))]
+    non_lues = [entree for entree in avec_lien if not entree.get("url_verifiee")]
+    compte = {
+        "total": len(entrees),
+        "verifiees": len(avec_lien) - len(non_lues),
+        "resolus": sum(
+            1 for entree in non_lues
+            if entree.get("lien_resout") in (True, "redirige")
+        ),
+        "refuses": sum(
+            1 for entree in non_lues if entree.get("lien_resout") == "refuse"
+        ),
+        "morts": sum(1 for entree in non_lues if entree.get("lien_resout") is False),
+        "sans_lien": len(entrees) - len(avec_lien),
+    }
+    compte["jamais"] = len(non_lues) - (
+        compte["resolus"] + compte["refuses"] + compte["morts"]
     )
-    sans_lien = sum(1 for entree in entrees if not url_utilisable(entree.get("url")))
-    return total, verifiees, sans_lien
+    return compte
 
 
 def phrase_de_decompte(entrees):
     """Le compte, dit au lecteur en toutes lettres."""
-    total, verifiees, sans_lien = decompte(entrees)
+    compte = decompte(entrees)
+    total, verifiees = compte["total"], compte["verifiees"]
+    resolus, sans_lien = compte["resolus"], compte["sans_lien"]
     phrase = "%d source%s. %d port%s un lien vérifié en l’ouvrant" % (
         total,
         "s" if total > 1 else "",
         verifiees,
         "ent" if verifiees > 1 else "e",
     )
+    if resolus:
+        phrase += ", %d un lien qui répond sans que le document ait été relu" % resolus
     if sans_lien:
         phrase += ", %d n’%s pas été retrouvée%s en ligne" % (
             sans_lien,

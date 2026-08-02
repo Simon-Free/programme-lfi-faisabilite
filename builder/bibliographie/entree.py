@@ -4,9 +4,19 @@ D'abord ce qu'on en tire — la seule ligne qui interesse quelqu'un qui lit la
 fiche —, ensuite l'organisme et ce qu'il est, le titre exact, l'endroit ou
 regarder dans le document, et enfin l'acces.
 
-Les trois etats — lien verifie, reference sans lien, solidite faible — sont
-toujours ecrits en toutes lettres : la couleur seule ne porte jamais
-l'information.
+Les etats — lien verifie, lien qui resout sans que le document ait ete relu,
+lien mort, reference sans lien, solidite faible — sont toujours ecrits en
+toutes lettres : la couleur seule ne porte jamais l'information.
+
+Deux constats distincts, qu'il ne faut jamais confondre :
+
+- `url_verifiee` dit qu'on a ouvert le lien **et** constate qu'il sert bien ce
+  document-la. C'est une lecture.
+- `lien_resout` dit seulement que l'adresse repond et sert *un* document. C'est
+  une interrogation automatique, qui ne regarde pas ce qu'elle a recu.
+
+Le second ne vaut jamais le premier, et une reference ne passe pas de l'un a
+l'autre sans que quelqu'un ait lu le document.
 """
 
 from urllib.parse import urlsplit
@@ -17,9 +27,19 @@ SCHEMAS_AUTORISES = ("https://", "http://")
 
 ETIQUETTES = {
     "verifie": ("source__etat--verifie", "Lien vérifié"),
+    "resout": ("source__etat--resout", "Lien ouvert, document non relu"),
+    "deplace": ("source__etat--resout", "Lien ouvert, adresse déplacée"),
+    "refuse": ("source__etat--refuse", "Lien refusé aux clients automatisés"),
+    "mort": ("source__etat--mort", "Lien mort"),
     "non-verifie": ("source__etat--non-verifie", "Lien non vérifié"),
     "sans-lien": ("source__etat--sans-lien", "Référence non retrouvée en ligne"),
     "faible": ("source__etat--faible", "Solidité faible"),
+}
+
+# Une seule pastille par reference : la liste compte plus de cinq cents
+# entrees, deux marques par ligne la rendraient illisible.
+ETAT_DU_LIEN = {
+    True: "resout", "redirige": "deplace", "refuse": "refuse", False: "mort",
 }
 
 
@@ -45,13 +65,32 @@ def _domaine(url):
     return hote[4:] if hote.startswith("www.") else hote
 
 
+def etat_du_lien(entree):
+    """La marque d'une reference qui porte un lien, du plus fort au plus faible.
+
+    La lecture prime sur l'interrogation automatique : une reference relue
+    reste « vérifiée » meme si la machine n'a pas su ouvrir son adresse — c'est
+    le cas d'EUR-Lex, qui oppose un defi aux clients automatises.
+    """
+    if entree.get("url_verifiee"):
+        return "verifie"
+    if "lien_resout" not in entree:
+        return "non-verifie"
+    return ETAT_DU_LIEN.get(entree["lien_resout"], "non-verifie")
+
+
+def _note(entree):
+    """La phrase qui explique un acces inhabituel, quand il y en a une."""
+    note = escape_html((entree.get("lien_note") or "").strip())
+    return '<span class="source__note">%s</span>' % note if note else ""
+
+
 def rendre_acces(entree):
     """Le lien s'il est utilisable, et l'etat de la reference en toutes lettres."""
     url = url_utilisable(entree.get("url"))
     marques = []
     if url:
-        verifie = "verifie" if entree.get("url_verifiee") else "non-verifie"
-        marques.append(_etat(verifie))
+        marques.append(_etat(etat_du_lien(entree)))
         marques.append(
             '<a class="source__lien" href="%s" target="_blank" rel="noopener">'
             "Ouvrir le document%s</a>"
@@ -64,6 +103,7 @@ def rendre_acces(entree):
         marques.append(_etat("sans-lien"))
     if entree.get("solidite") == "faible":
         marques.append(_etat("faible"))
+    marques.append(_note(entree))
     return '<p class="source__acces">%s</p>' % "".join(marques)
 
 

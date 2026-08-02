@@ -342,8 +342,10 @@ a.footnote-ref {
   font-size: var(--step--1);
 }
 
-/* Les trois etats sont toujours ecrits : la couleur ne porte jamais seule
-   l'information, et chaque pastille est doublee d'un signe typographique. */
+/* Les etats sont toujours ecrits : la couleur ne porte jamais seule
+   l'information, et chaque pastille est doublee d'un signe typographique.
+   Une seule pastille d'etat par reference, la liste en compte plus de cinq
+   cents. */
 .source__acces {
   display: flex;
   flex-wrap: wrap;
@@ -372,12 +374,43 @@ a.footnote-ref {
 .source__etat--verifie::before {
   content: "\2713";
 }
-.source__etat--non-verifie {
+/* Ouvert par une machine, jamais relu : entre le verifie et le non-verifie.
+   Le signe est une fleche circulaire, distincte du crochet de la lecture. */
+.source__etat--resout {
   color: var(--confidence-medium);
   background: var(--confidence-medium-bg);
 }
+.source__etat--resout::before {
+  content: "\21BB";
+}
+.source__etat--refuse {
+  color: var(--severity-minor);
+  background: var(--severity-minor-bg);
+}
+.source__etat--refuse::before {
+  content: "\2298";
+}
+.source__etat--mort {
+  color: var(--severity-blocking);
+  background: var(--severity-blocking-bg);
+}
+.source__etat--mort::before {
+  content: "\2717";
+}
+.source__etat--non-verifie {
+  color: var(--confidence-low);
+  background: var(--confidence-low-bg);
+}
 .source__etat--non-verifie::before {
   content: "?";
+}
+/* La note d'acces est une phrase : elle prend sa propre ligne sous la
+   pastille, plutot que de se comprimer a cote du lien. */
+.source__note {
+  flex-basis: 100%;
+  font-family: var(--font-ui);
+  font-size: var(--step--1);
+  color: var(--text-secondary);
 }
 .source__etat--sans-lien {
   color: var(--confidence-low);

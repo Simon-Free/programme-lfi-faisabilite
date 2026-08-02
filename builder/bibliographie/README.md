@@ -27,10 +27,41 @@ markdown de la fiche (`obstacle_europe`). En Python :
 from builder.bibliographie import rendre_liste, rendre_bibliographie
 ```
 
-Trois états sont toujours écrits en toutes lettres, jamais portés par la
-couleur seule : lien vérifié, lien non vérifié, référence non retrouvée en
-ligne — auxquels s'ajoute la mention de solidité faible. Une `url` qui ne
-commence pas par `http://` ou `https://` ne produit aucun lien.
+## Les deux constats, et les états qu'ils produisent
+
+Une récolte porte **deux champs distincts**, qu'il ne faut jamais confondre.
+
+| Champ | Ce qu'il établit | Qui l'établit |
+|--------|------------------|---------------|
+| `url_verifiee` | le lien a été ouvert **et** le document s'y trouve, portant bien ce qu'on lui attribue | une lecture |
+| `lien_resout` | l'adresse répond et sert *un* document, sans que personne ait regardé lequel | une interrogation automatique |
+
+`lien_resout` prend quatre valeurs :
+
+| Valeur | Ce qu'elle dit | Étiquette rendue |
+|---|---|---|
+| `true` | l'adresse sert un document | Lien ouvert, document non relu |
+| `"redirige"` | elle sert un document, à une autre adresse que celle annoncée | Lien ouvert, adresse déplacée |
+| `"refuse"` | le site oppose un mur à tout client automatisé ; la page s'ouvre dans un navigateur | Lien refusé aux clients automatisés |
+| `false` | elle ne sert rien, et aucun remplacement n'a été trouvé | Lien mort |
+
+**Absent**, il signifie que l'adresse n'a jamais été interrogée. Passer de
+`lien_resout` à `url_verifiee` suppose qu'un lecteur ait ouvert le document :
+aucune interrogation automatique ne fait franchir cette marche, et `url_verifiee`
+l'emporte toujours sur `lien_resout` au rendu — une référence lue reste
+« vérifiée » même quand la machine n'a pas su ouvrir son adresse.
+
+Un champ facultatif `lien_note` porte une phrase quand l'accès est
+inhabituel — un site qui oppose un défi aux clients automatisés, un éditeur
+dont l'accès est fermé. Elle est écrite à côté de la pastille.
+
+Les états sont toujours écrits en toutes lettres, jamais portés par la couleur
+seule, et chaque pastille est doublée d'un signe typographique. S'y ajoutent
+« Lien non vérifié » quand `lien_resout` est absent, « Référence non retrouvée
+en ligne » quand il n'y a pas d'adresse, et la mention de solidité faible.
+**Une seule pastille d'état par référence** : la liste en compte plus de cinq
+cents, deux marques par ligne la rendraient illisible. Une `url` qui ne commence
+pas par `http://` ou `https://` ne produit aucun lien.
 
 ## Modules
 | Module | Description |

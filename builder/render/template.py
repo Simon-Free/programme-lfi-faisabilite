@@ -88,8 +88,10 @@ def _notice(base):
         "travaillant en parallèle. <strong>Aucun chiffre n'a été vérifié par "
         "un humain.</strong> La supervision humaine a porté sur la méthode et "
         "sur les objections de fond, pas sur le contrôle pièce à pièce. Les "
-        "301 références sur 518 dites « vérifiées » l'ont été par une machine, "
+        "307 références sur 523 dites « vérifiées » l'ont été par une machine, "
         "et une relecture a trouvé parmi elles des citations inexactes. "
+        "Pour 190 autres, une machine a seulement constaté que le lien "
+        "répond — elle n'a pas lu le document. "
         '<a href="%scomprendre/methode.html#comment-ce-dossier-a-ete-fabrique">'
         "Comment ce dossier a été fabriqué</a> · "
         '<a href="%ssources/travaux.html">Ce qui est fait, ce qui reste'

@@ -6,14 +6,8 @@ l'est pas.
 """
 
 from ..markdown import escape_attribute, escape_html, slugify
-from .entree import (
-    ancre_de,
-    classe_de,
-    rendre_acces,
-    rendre_reperage,
-    rendre_titre,
-    url_utilisable,
-)
+from .entree import ancre_de, classe_de, rendre_acces, rendre_reperage, rendre_titre
+from .liste import decompte
 from .regroupement import rassembler
 
 VIDE = (
@@ -24,23 +18,38 @@ VIDE = (
 )
 
 
+ENTETE = (
+    "<strong>%d</strong> références au total, réparties entre "
+    "<strong>%d</strong> organismes."
+)
+
+GABARITS = [
+    ("verifiees", "<strong>%d</strong> portent un lien qui a été ouvert et "
+     "vérifié : le document s’y trouve, et il porte bien ce qu’on lui attribue."),
+    ("resolus", "<strong>%d</strong> portent un lien qui répond et sert un "
+     "document, sans que ce document ait été relu. C’est une machine qui a "
+     "ouvert l’adresse ; elle n’a pas regardé ce qu’elle recevait."),
+    ("refuses", "<strong>%d</strong> pointent vers un site qui refuse tout "
+     "client automatisé : la page s’ouvre dans un navigateur, elle n’a pas pu "
+     "être contrôlée autrement."),
+    ("morts", "<strong>%d</strong> pointent vers une adresse qui ne sert plus "
+     "rien, sans qu’une adresse de remplacement ait été trouvée."),
+    ("jamais", "<strong>%d</strong> portent un lien qui n’a encore été ouvert "
+     "par personne."),
+    ("sans_lien", "<strong>%d</strong> n’ont pas été retrouvées en ligne : elles "
+     "sont citées par leur référence exacte, sans lien mort."),
+]
+
+
 def _compte_global(entrees, organismes, partielles):
-    total = len(entrees)
-    verifiees = sum(
-        1
-        for entree in entrees
-        if url_utilisable(entree.get("url")) and entree.get("url_verifiee")
-    )
-    sans_lien = sum(1 for entree in entrees if not url_utilisable(entree.get("url")))
+    """Le decompte par etat. Une ligne dont le compte est nul n'est pas ecrite."""
+    compte = decompte(entrees)
     faibles = sum(1 for entree in entrees if entree.get("solidite") == "faible")
-    lignes = [
-        "<strong>%d</strong> références au total, réparties entre "
-        "<strong>%d</strong> organismes." % (total, len(organismes)),
-        "<strong>%d</strong> portent un lien qui a été ouvert et vérifié." % verifiees,
-        "<strong>%d</strong> n’ont pas été retrouvées en ligne : elles sont citées "
-        "par leur référence exacte, sans lien mort." % sans_lien,
-        "<strong>%d</strong> sont signalées de solidité faible." % faibles,
-    ]
+    lignes = [ENTETE % (compte["total"], len(organismes))]
+    lignes += [gabarit % compte[cle] for cle, gabarit in GABARITS if compte[cle]]
+    lignes.append(
+        "<strong>%d</strong> sont signalées de solidité faible." % faibles
+    )
     if partielles:
         lignes.append(
             "La collecte de %d fiche(s) était en cours d’écriture à la "
